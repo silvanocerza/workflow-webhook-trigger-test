@@ -1,0 +1,42 @@
+name: Other workflows
+
+on:
+  repository_dispatch
+
+jobs:
+  run-tests:
+    if: ${{ github.event.action == 'run-tests' }}
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # Fetches only one commit
+          fetch-depth: 1
+
+      - name: Build with Maven
+        shell: bash
+        run: mvn compile
+
+      - name: Run tests with Maven
+        shell: bash
+        run: mvn test
+
+  build-windows:
+    if: ${{ github.event.action == 'build-windows' }}
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # Fetches only one commit
+          fetch-depth: 1
+
+      - name: Build with Maven
+        run: mvn compile
+
+      - name: Run tests with Maven
+        run: mvn test
+
+      - name: Create package
+        run: mvn package
