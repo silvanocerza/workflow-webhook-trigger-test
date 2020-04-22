@@ -11,7 +11,9 @@ The project contains three different jobs:
 - `build-windows`
 
 `release` is run automatically whenever a tag that starts with `v` is pushed, like `v0.1.0`.
+
 `run-tests` is launched manually when running `trigger-workflow.sh <MY_GH_TOKEN> run-tests`.
+
 `build-windows` is launched manually when running `trigger-workflow.sh <MY_GH_TOKEN> build-windows`.
 
 
