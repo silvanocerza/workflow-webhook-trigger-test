@@ -11,7 +11,7 @@ GITHUB_TOKEN=$1
 # build-windows
 ACTION_TYPE=$2
 
-curl -X POST https://api.github.com/repos/silvanocerza/workflow-webhook-trigger-test/dispatches \
--H 'Accept: application/vnd.github.everest-preview+json' \
--H 'Authorization: token $GITHUB_TOKEN' \
---data '{"event_type": "$ACTION_TYPE"}'
+curl https://api.github.com/repos/silvanocerza/workflow-webhook-trigger-test/dispatches \
+-H "Accept: application/vnd.github.everest-preview+json" \
+-H "Authorization: token $GITHUB_TOKEN" \
+--data "{\"event_type\": \"$ACTION_TYPE\"}"
